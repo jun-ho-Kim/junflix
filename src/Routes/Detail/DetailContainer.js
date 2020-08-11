@@ -7,7 +7,6 @@ export default function Detail() {
     const [loading, setLoading] = useState(true);
     const [result, setResult] = useState();
     const [error, setError] = useState();
-    const [clicked, setCilcked] = useState(false);
     const {push} = useHistory();
     const {pathname} = useLocation();     
     const isMovie= pathname.includes("/movie/");  

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useHistory, useLocation, useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import styled from 'styled-components';
 import { moviesApi, tvApi } from "api";
 

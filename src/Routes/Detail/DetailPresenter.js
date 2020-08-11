@@ -1,5 +1,4 @@
 import React from "react";
-import {Link, Route} from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
