@@ -51,8 +51,10 @@ export default function Detail() {
             setResult(result);
             // console.log("tvshow:",result);
         }
-    } catch {
+    } catch(error) {
+        console.log(error);
         setError({});
+        // push("/");
     } finally {
         setLoading(false);
         setResult(result);

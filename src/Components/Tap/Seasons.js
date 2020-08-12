@@ -48,7 +48,7 @@ const Name = styled.h3`
     width: 60%;
     text-align:center;
     margin-top: 7px;
-    font-size: 24px;
+    font-size: 15px;
     font-weight: 600;
 `;
 
@@ -93,11 +93,13 @@ const TvSeasons = ({}) => {
                 require("../../assets/noPosterSmall.png")} />
                 </PosterContainer>                
                 <Name>{`${index+1}.`}{" "}
-                {season.name.length > 26 ?
+                {season.name && season.name.length > 26 ?
                 `${season.name.substring(0,25)}...` :
                 season.name}</Name>
+                {season.air_date &&
                 <Year>{season.air_date.substring(0,4)}</Year>
-            </PosterLink>
+                }
+                </PosterLink>
             )}
         </Container>
     );

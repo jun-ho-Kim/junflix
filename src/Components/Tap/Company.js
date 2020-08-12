@@ -7,18 +7,22 @@ import TapLoader from './TapLoader';
 const Cover = styled.div`
     position: relative;
     width: 60%;
-    /* height: 50%; */
+    min-width: 340px;
+    min-height: 130px;
+    max-height: 250px;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: repeat(auto-fill, 1fr);
-    grid-template-rows: repeat(auto-fit, 1fr));
-    gap: 8px;
-    align-items: center;
+    /* grid-template-rows: repeat(auto-fit, 1fr)); */
+ 
+
+    align-self: center;
     overflow-x: scroll;
     background-color: inherit;
 `;
 const Container = styled.div`
-    padding: 15px;
+    margin-top: 12px;
+    /* padding: 15px; */
     height: 100%;
     /* width: 80px;
     height: 80px; */
@@ -27,22 +31,31 @@ const Container = styled.div`
     align-items: center;
     justify-content: space-around; */
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    gap: 8px;
+    /* grid-template-columns: repeat(1, 1fr); */
+    grid-template-rows: repeat(2, 0.6fr);
     align-items: center;
+    justify-content:center;
+    background-color: white;
 `;
 
 const Name = styled.div`
-    margin-top: 15px;
-    font-size: 17px;
+    /* margin-top: 15px; */
+    width: 80px;
+    font-size: 13px;
     font-weight: 600;
     text-align: center;
+    justify-content: center;
+    color: black;
 `;
 
 const CompanyLogo = styled.img`
     /* background-size: cover;
     background-position: center center; */
+    margin-top: 12px;
     width: 100px;
+    justify-content: center;
+    align-self: center;
 
 `;
 const CompanyTap = () => {

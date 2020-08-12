@@ -6,7 +6,7 @@ import Loader from "Components/Loader";
 import ContentNav from "../../Components/ContentNav";
 
 const Container = styled.div`
-    margin-left: 20%;
+    margin-left: 15%;
     padding: 50px;
     height: calc(100vh - 50px);
     width:100%;
@@ -30,6 +30,7 @@ const Backdrop = styled.div`
 
 `;
 const Content = styled.div`
+    margin-left: 6%;
     display: flex;
     width: 100%;
     height:100%;
@@ -156,10 +157,12 @@ const DetailPresenter = ({key, id, result, loading, error, pathname, isMovie}) =
     ) : (
     <>
     <Container>
+        {result.backdrop_path && 
         <Backdrop
         bgImage={result.backdrop_path 
             ? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
             : require("../../assets/noPosterSmall.png")} />
+        }
         <Content>
             <Cover
                 bgImage={

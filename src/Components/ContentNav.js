@@ -10,7 +10,9 @@ const NavContainer = styled.nav`
     margin-top: 20px;
     background-color: rgb(59, 59, 59, 0.7);
     width: 60%;
+    min-width: 350px;
     height: 40px;
+    min-height: 40px;
     border-top-left-radius: 10em 10em;
     border-top-right-radius: 1em 5em;
 `;
@@ -18,6 +20,7 @@ const NavContainer = styled.nav`
 const List = styled.ul`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(0.5fr, 1fr));
+    grid-template-rows: repeat(2, minmax(0.5fr, 1fr));
     grid-auto-flow: column;
 `;
 
@@ -25,9 +28,10 @@ const Item = styled.li`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 23px;
+    font-size: 15px;
     font-weight: 600;
-    margin-top: 5px;
+    margin-top: 12px;
+    padding: 0 7px;
     color: ${props => (props.select ? "yellow" : "white")};
 `;
 const SLink = styled(Link)`
@@ -65,8 +69,11 @@ const ContentNav = ({pathname, id ,isMovie}) => (
         <Item select={pathname === `/movie/${id}/country`}>
             <SLink to={`/movie/${id}/country`}>Country</SLink>
         </Item>
-        <Item select={pathname === `/movie/${id}/videoList`}>
-            <SLink to={`/movie/${id}/videoList`}>Video List</SLink>
+        {/* <Item select={pathname === `/movie/${id}/credits`}>
+            <SLink to={`/show/${id}/credits`}>Cridits</SLink>
+        </Item> */}
+        <Item select={pathname === `/movie/${id}/videos`}>
+            <SLink to={`/movie/${id}/videos`}>Videos</SLink>
         </Item>
         </>
         }
@@ -81,11 +88,11 @@ const ContentNav = ({pathname, id ,isMovie}) => (
         <Item select={pathname === `/show/${id}/seasons`}>
             <SLink to={`/show/${id}/seasons`}>Seasons</SLink>
         </Item>
-        <Item select={pathname === `/show/${id}/credits`}>
+        {/* <Item select={pathname === `/show/${id}/credits`}>
             <SLink to={`/show/${id}/credits`}>Cridits</SLink>
-        </Item>
-        <Item select={pathname === `/show/${id}/videoList`}>
-            <SLink to={`/show/${id}/videoList`}>Video List</SLink>
+        </Item> */}
+        <Item select={pathname === `/show/${id}/videos`}>
+            <SLink to={`/show/${id}/videos`}>Videos</SLink>
         </Item>                  
         </>    
         }
@@ -129,7 +136,7 @@ const ContentNav = ({pathname, id ,isMovie}) => (
 <Route path="/show/:id/country" component={Country} />
 <Route path="/show/:id/seasons" component={TvSeasons} />
 <Route path="/show/:id/credits" component={VideoList} />
-<Route path="/show/:id/videoList" component={VideoList} />
+<Route path="/show/:id/videos" component={VideoList} />
 </>
 );
 
