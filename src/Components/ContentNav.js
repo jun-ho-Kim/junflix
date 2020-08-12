@@ -3,6 +3,8 @@ import { Link, Route } from "react-router-dom";
 import styled from "styled-components";
 import Company from "./Tap/Company";
 import Country from "./Tap/Country";
+import TvSeasons from "./Tap/Seasons";
+import VideoList from "./Tap/VideoList";
 
 const NavContainer = styled.nav`
     margin-top: 20px;
@@ -15,8 +17,8 @@ const NavContainer = styled.nav`
 
 const List = styled.ul`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
+    grid-template-columns: repeat(auto-fill, minmax(0.5fr, 1fr));
+    grid-auto-flow: column;
 `;
 
 const Item = styled.li`
@@ -25,8 +27,8 @@ const Item = styled.li`
     align-items: center;
     font-size: 23px;
     font-weight: 600;
-    color: ${props => (props.select ? "yellow" : "white")};
     margin-top: 5px;
+    color: ${props => (props.select ? "yellow" : "white")};
 `;
 const SLink = styled(Link)`
 `;
@@ -49,19 +51,54 @@ const SLink = styled(Link)`
 // `;
 
 
-const ContentNav = ({pathname, id ,production_companies, production_countries, origin_country}) => (
+const ContentNav = ({pathname, id ,isMovie}) => (
+
 
 <>
-
 <NavContainer>
     <List>
+        {isMovie &&
+        <>
         <Item select={pathname === `/movie/${id}/company`}>
             <SLink to={`/movie/${id}/company`}>Company</SLink>
         </Item>
         <Item select={pathname === `/movie/${id}/country`}>
             <SLink to={`/movie/${id}/country`}>Country</SLink>
         </Item>
+        <Item select={pathname === `/movie/${id}/videoList`}>
+            <SLink to={`/movie/${id}/videoList`}>Video List</SLink>
+        </Item>
+        </>
+        }
+        {!isMovie &&
+        <>
+        <Item select={pathname === `/show/${id}/company`}>
+            <SLink to={`/show/${id}/company`}>Company</SLink>
+        </Item>
+        <Item select={pathname === `/show/${id}/country`}>
+            <SLink to={`/show/${id}/country`}>Country</SLink>
+        </Item>
+        <Item select={pathname === `/show/${id}/seasons`}>
+            <SLink to={`/show/${id}/seasons`}>Seasons</SLink>
+        </Item>
+        <Item select={pathname === `/show/${id}/credits`}>
+            <SLink to={`/show/${id}/credits`}>Cridits</SLink>
+        </Item>
+        <Item select={pathname === `/show/${id}/videoList`}>
+            <SLink to={`/show/${id}/videoList`}>Video List</SLink>
+        </Item>                  
+        </>    
+        }
     </List>
+
+    {/* <List>
+        <Item select={pathname === isMovie ? `/movie/${id}/company` :`/show/${id}/company`}>
+            <SLink to={isMovie ? `/movie/${id}/company` : `/show/${id}/company`}>Company</SLink>
+        </Item>
+        <Item select={pathname === isMovie ? `/movie/${id}/country` : `/show/${id}/country`}>
+            <SLink to={isMovie ? `/movie/${id}/country` : `/show/${id}/country`}>Country</SLink>
+        </Item>
+    </List> */}
     {/* <NavContent> */}
         {/* <ProductionC opacity={pathname === `/movie/${id}/company`}> */}
             {/* {production_companies &&
@@ -82,8 +119,17 @@ const ContentNav = ({pathname, id ,production_companies, production_countries, o
         {/* </ProductionC> */}
     {/* </NavContent> */}
 </NavContainer>
+
 <Route path="/movie/:id/company" component={Company} />
-<Route path="/movie/:id/country" componenet={Country} />
+<Route path="/movie/:id/country" component={Country} />
+<Route path="/movie/:id/credits" component={VideoList} />
+<Route path="/movie/:id/videoList" component={VideoList} />
+
+<Route path="/show/:id/company" component={Company} />
+<Route path="/show/:id/country" component={Country} />
+<Route path="/show/:id/seasons" component={TvSeasons} />
+<Route path="/show/:id/credits" component={VideoList} />
+<Route path="/show/:id/videoList" component={VideoList} />
 </>
 );
 

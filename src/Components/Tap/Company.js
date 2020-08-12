@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import {useLocation, useParams} from "react-router-dom";
 import styled from 'styled-components';
 import { moviesApi, tvApi } from "api";
+import TapLoader from './TapLoader';
 
 const Cover = styled.div`
+    position: relative;
     width: 60%;
     /* height: 50%; */
     display: grid;
@@ -14,23 +16,27 @@ const Cover = styled.div`
     align-items: center;
     overflow-x: scroll;
     background-color: inherit;
-    position: relative;
 `;
 const Container = styled.div`
-    /* padding: 10px 10px 0px 10px; */
+    padding: 15px;
+    height: 100%;
     /* width: 80px;
     height: 80px; */
-    display: flex;
+    /* display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-around; */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     align-items: center;
 `;
 
 const Name = styled.div`
-    /* margin: 15px 0; */
-    position: absolute;
-    bottom: -5px;
+    margin-top: 15px;
     font-size: 17px;
     font-weight: 600;
+    text-align: center;
 `;
 
 const CompanyLogo = styled.img`
@@ -39,12 +45,12 @@ const CompanyLogo = styled.img`
     width: 100px;
 
 `;
-
 const CompanyTap = () => {
     const [detail, setDetail] = useState({
         loading: true,
         data: null
     });
+
 
     const {pathname} = useLocation();
     const {id} = useParams();
@@ -57,7 +63,7 @@ const CompanyTap = () => {
             if(isMovie) {
                 ({data:result} = await moviesApi.movieDetail(id));
             } else {
-                ({data: result} = await tvApi.showDetail(id));
+                ({data:result} = await tvApi.showDetail(id));
             }
         } catch(error) {
             console.log(error);
@@ -73,7 +79,7 @@ const CompanyTap = () => {
         getData();
     }, []);
     return detail.loading ? (
-        "loading"
+        <TapLoader />
     ) : (
         <Cover>
             {detail && detail.data.production_companies.map(company =>
@@ -81,7 +87,7 @@ const CompanyTap = () => {
                 <CompanyLogo src={
                     company.logo_path? `https://image.tmdb.org/t/p/original${company.logo_path}`
                 : require("../../assets/noPosterSmall.png")} />
-                <Name>{company.name}</Name>
+            <Name>{company.name}</Name>
             </Container>
             )}                
         </Cover>

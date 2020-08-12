@@ -44,12 +44,12 @@ export default function Detail() {
             ({data:result} = await moviesApi.movieDetail(parsedId));
             // result = request.data;            
             setResult(result);
-            console.log("movie:",result);
+            // console.log("movie:",result);
         } else {
             ({data:result} = await tvApi.showDetail(parsedId));
             // result = request.data;
             setResult(result);
-            console.log("tvshow:",result);
+            // console.log("tvshow:",result);
         }
     } catch {
         setError({});
@@ -64,9 +64,12 @@ export default function Detail() {
         // console.log(this.props);
         // const {result, error, loading} = this.state;
     return <DetailPresenter
+        key={id}
+        id={id}
         loading={loading}
         error={error}
         result={result} 
         pathname={pathname}
+        isMovie={isMovie}
         />
 };

@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
-import { TvSeasons } from "../../Components/Seasons";
+// import { TvSeasons } from "../../Components/Seasons";
 import ContentNav from "../../Components/ContentNav";
 
 const Container = styled.div`
-margin-left: 20%;
+    margin-left: 20%;
     padding: 50px;
     height: calc(100vh - 50px);
     width:100%;
@@ -87,6 +87,9 @@ const ImdbLink = styled.a`
     color: black;
 
 `;
+
+const VideoContainer = styled.div`
+`;
 const VideoLink = styled.a`
   display: inline-block;
   position: relative;
@@ -118,8 +121,8 @@ const Overview = styled.p`
 `;
 
 
-const TVSeasons = styled.div`
-`;
+// const TVSeasons = styled.div`
+// `;
 
 
 // const NavContainer = styled.nav`
@@ -147,14 +150,16 @@ const TVSeasons = styled.div`
 //     left: 0;
 // `;
 
-const DetailPresenter = ({result, loading, error, pathname}) => 
+const DetailPresenter = ({key, id, result, loading, error, pathname, isMovie}) => 
     loading? (
         <Loader />
     ) : (
     <>
     <Container>
         <Backdrop
-        bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`} />
+        bgImage={result.backdrop_path 
+            ? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
+            : require("../../assets/noPosterSmall.png")} />
         <Content>
             <Cover
                 bgImage={
@@ -177,23 +182,40 @@ const DetailPresenter = ({result, loading, error, pathname}) =>
                             IMDB
                         </ImdbLink>
                     }
-                    <VideoLink href={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}
-                                target={"_blank"}
-                                src={require("../../assets/youtube.png")} />
+                    
+                    <VideoContainer>
+                    {result.videos.results &&
+                    //  (result.videos.results.map((video,index) => 
+                    // <VideoLink
+                    //     key={video.id}
+                    //     id={video.id}
+                    //     href={`https://www.youtube.com/watch?v=${video.key}`}
+                    //     target={"_blank"}
+                    //     src={require("../../assets/youtube.png")} />
+                    // ))
+                    <VideoLink
+                        key={result.videos.results.id}
+                        id={result.videos.results.id}
+                        href={`https://www.youtube.com/watch?v=${result.videos.results[0].key}`}
+                        target={"_blank"}
+                        src={require("../../assets/youtube.png")} />
+                    }
+                    </VideoContainer>
                     </ImdbIcon>
                     </Item>
+
                 </TitleImdb>
                 <ItemContainer>
                     <Item>
                         {result.release_date 
-                        ? result.release_date.substring(0,4)
-                        : result.first_air_date.substring(0,4)}
+                        ? `📅 ${result.release_date.substring(0,4)}`
+                        : `📅 ${result.first_air_date.substring(0,4)}`}
                     </Item>
                     <Divider>•</Divider>
                     <Item>
                         {result.runtime
-                        ? result.runtime
-                        : result.episode_run_time[0]}
+                        ? `🕗 ${result.runtime} m`
+                        : `🕗 ${result.episode_run_time[0]} m`}
                     </Item>
                     <Divider>•</Divider>
                     <Item>
@@ -215,11 +237,11 @@ const DetailPresenter = ({result, loading, error, pathname}) =>
                         }
                     </productionCountries> */}
                 <Overview>{result.overview}</Overview>
-                {result.seasons &&
+                {/* {result.seasons &&
                 <TVSeasons>
                     {result.seasons.map(seanson =><TvSeasons {...seanson} />)}
                 </TVSeasons>
-                }
+                } */}
         {/* <NavContainer>
             <List>
                 <Item>
@@ -244,10 +266,8 @@ const DetailPresenter = ({result, loading, error, pathname}) =>
         </NavContainer> */}
         <ContentNav
         id={result.id}
-        production_companies={result.production_companies}
-        production_countries={result.production_countries}
-        origin_country={result.origin_country}
-        pathname={pathname} 
+        pathname={pathname}
+        isMovie={isMovie} 
         />            
             </Data>
         </Content>
