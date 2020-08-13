@@ -49,9 +49,10 @@ const Data = styled.div`
     margin-left: 15px;
 `;
 const TitleImdb = styled.div`
-    width: 50%; 
+    /* width: 80%;  */
+    margin-left: 12px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 `;
 const Title = styled.h3`
     font-size: 32px;
@@ -71,15 +72,15 @@ const ImdbIcon = styled.div`
     align-items: center;
 `;
 const ImdbLink = styled.a`
-    width: 65px;
-    height: 32px;
+    /* width: 65px;
+    height: 32px; */    
+    width: 40px;
+    height: 22px;
+
     background-color: #E2B616;
     color: black;
-    font-size: 19px;
+    font-size: 12px;
     border-radius: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-weight: 800;
     margin-left: 15px;
     display: flex;
@@ -96,8 +97,8 @@ const VideoLink = styled.a`
   position: relative;
   /* width: 85px; */
     /* height: 52px; */
-    width: 48px;
-    height: 32px;
+    width: 35px;
+    height: 22px;
     margin-left: 7px;
     margin-top: 3px;
   background-position: center center;
@@ -110,6 +111,7 @@ const ItemContainer = styled.div`
 `;
 const Item = styled.span`
     /* display:flex; */
+    /* margin-bottom: 8px; */
 `;
 const Divider = styled.span`
     padding: 0px 10px;

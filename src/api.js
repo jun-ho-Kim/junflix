@@ -25,7 +25,7 @@ export const moviesApi = {
       }
     }),
     credits: id => 
-      api.get(`tv/${id}/credits`)
+      api.get(`movie/${id}/credits`)
 };
 
 export const tvApi = {

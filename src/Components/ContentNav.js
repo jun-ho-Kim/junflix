@@ -64,37 +64,37 @@ const ContentNav = ({pathname, id ,isMovie}) => (
     <List>
         {isMovie &&
         <>
+        <Item select={pathname === `/movie/${id}/credits`}>
+            <SLink to={`/movie/${id}/credits`}>Actor/Crew</SLink>
+        </Item>
+        <Item select={pathname === `/movie/${id}/videos`}>
+            <SLink to={`/movie/${id}/videos`}>Videos</SLink>
+        </Item>
         <Item select={pathname === `/movie/${id}/company`}>
             <SLink to={`/movie/${id}/company`}>Company</SLink>
         </Item>
         <Item select={pathname === `/movie/${id}/country`}>
             <SLink to={`/movie/${id}/country`}>Country</SLink>
         </Item>
-        <Item select={pathname === `/movie/${id}/credits`}>
-            <SLink to={`/movie/${id}/credits`}>Cridits</SLink>
-        </Item>
-        <Item select={pathname === `/movie/${id}/videos`}>
-            <SLink to={`/movie/${id}/videos`}>Videos</SLink>
-        </Item>
         </>
         }
         {!isMovie &&
         <>
+        <Item select={pathname === `/show/${id}/credits`}>
+            <SLink to={`/show/${id}/credits`}>Actor/Crew</SLink>
+        </Item>
+        <Item select={pathname === `/show/${id}/seasons`}>
+            <SLink to={`/show/${id}/seasons`}>Seasons</SLink>
+        </Item>
+        <Item select={pathname === `/show/${id}/videos`}>
+            <SLink to={`/show/${id}/videos`}>Videos</SLink>
+        </Item>                  
         <Item select={pathname === `/show/${id}/company`}>
             <SLink to={`/show/${id}/company`}>Company</SLink>
         </Item>
         <Item select={pathname === `/show/${id}/country`}>
             <SLink to={`/show/${id}/country`}>Country</SLink>
         </Item>
-        <Item select={pathname === `/show/${id}/seasons`}>
-            <SLink to={`/show/${id}/seasons`}>Seasons</SLink>
-        </Item>
-        <Item select={pathname === `/show/${id}/credits`}>
-            <SLink to={`/show/${id}/credits`}>Cridits</SLink>
-        </Item>
-        <Item select={pathname === `/show/${id}/videos`}>
-            <SLink to={`/show/${id}/videos`}>Videos</SLink>
-        </Item>                  
         </>    
         }
     </List>
