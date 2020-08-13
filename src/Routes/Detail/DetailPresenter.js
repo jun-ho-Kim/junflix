@@ -118,7 +118,8 @@ const Overview = styled.p`
     font-size: 12px;
     opacity: 0.7;
     line-height: 1.5;
-    width:55%;
+    /* min-width:60%; */
+    max-width:70%;
 `;
 
 

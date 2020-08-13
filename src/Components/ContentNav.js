@@ -130,7 +130,7 @@ const ContentNav = ({pathname, id ,isMovie}) => (
 <Route path="/movie/:id/company" component={Company} />
 <Route path="/movie/:id/country" component={Country} />
 <Route path="/movie/:id/credits" component={VideoList} />
-<Route path="/movie/:id/videoList" component={VideoList} />
+<Route path="/movie/:id/videos" component={VideoList} />
 
 <Route path="/show/:id/company" component={Company} />
 <Route path="/show/:id/country" component={Country} />

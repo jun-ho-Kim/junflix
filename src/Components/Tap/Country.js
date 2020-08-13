@@ -6,6 +6,9 @@ import TapLoader from "./TapLoader";
 
 const Cover = styled.div`
     width: 60%;
+    min-width: 350px;
+    min-height: 130px;
+    max-height: 250px;
    /* display: flex; */
     display: grid;
     /* flex-direction: column; */

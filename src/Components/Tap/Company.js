@@ -32,6 +32,7 @@ const Container = styled.div`
     justify-content: space-around; */
     display: grid;
     gap: 8px;
+    padding: 5px;
     /* grid-template-columns: repeat(1, 1fr); */
     grid-template-rows: repeat(2, 0.6fr);
     align-items: center;
@@ -47,6 +48,7 @@ const Name = styled.div`
     text-align: center;
     justify-content: center;
     color: black;
+    margin-left: 12px;
 `;
 
 const CompanyLogo = styled.img`

@@ -8,6 +8,9 @@ import TapLoader from "./TapLoader";
 const Container = styled.div`
     width: 60%;
     height: 50%;
+    min-width: 350px;
+    min-height: 130px;
+    max-height: 250px;
     display:grid;
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: repeat(auto-fill,1fr);
