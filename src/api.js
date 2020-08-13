@@ -23,7 +23,9 @@ export const moviesApi = {
       params: {
         query: encodeURIComponent(term)
       }
-    })
+    }),
+    credits: id => 
+      api.get(`tv/${id}/credits`)
 };
 
 export const tvApi = {
@@ -41,5 +43,9 @@ export const tvApi = {
       params: {
         query: encodeURIComponent(term)
       }
-    })
+    }),
+    credits: id => 
+      api.get(`tv/${id}/credits`),
+    externalId: id =>
+      api.get(`tv/${id}/external_ids`)
 };

@@ -6,6 +6,7 @@ import {moviesApi, tvApi} from "api";
 export default function Detail() {
     const [loading, setLoading] = useState(true);
     const [result, setResult] = useState();
+    const [externalResult, setExternalResult] = useState(true);
     const [error, setError] = useState();
     const {push} = useHistory();
     const {pathname} = useLocation();     
@@ -32,6 +33,7 @@ export default function Detail() {
     //     const {isMovie} = this.state;
     async function getDetail() {
     let result = null;
+    let externalResult = null;
     // const {push} = useHistory();        
     // const {id} = useParams();
     const parsedId = parseInt(id);
@@ -47,8 +49,10 @@ export default function Detail() {
             // console.log("movie:",result);
         } else {
             ({data:result} = await tvApi.showDetail(parsedId));
+            ({data:externalResult} = await tvApi.externalId(parsedId));
             // result = request.data;
             setResult(result);
+            setExternalResult(externalResult);
             // console.log("tvshow:",result);
         }
     } catch(error) {
@@ -62,7 +66,7 @@ export default function Detail() {
 };
     useEffect(() => {
         getDetail();
-    });
+    }, []);
         // console.log(this.props);
         // const {result, error, loading} = this.state;
     return <DetailPresenter
@@ -71,6 +75,7 @@ export default function Detail() {
         loading={loading}
         error={error}
         result={result} 
+        externalResult={externalResult}
         pathname={pathname}
         isMovie={isMovie}
         />

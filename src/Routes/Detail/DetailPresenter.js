@@ -152,12 +152,13 @@ const Overview = styled.p`
 //     left: 0;
 // `;
 
-const DetailPresenter = ({key, id, result, loading, error, pathname, isMovie}) => 
+const DetailPresenter = ({key, id, result, externalResult, loading, error, pathname, isMovie}) => 
     loading? (
         <Loader />
     ) : (
     <>
     <Container>
+        {console.log("externalResult:", externalResult)}
         {result.backdrop_path && 
         <Backdrop
         bgImage={result.backdrop_path 
@@ -183,6 +184,11 @@ const DetailPresenter = ({key, id, result, loading, error, pathname, isMovie}) =
                     <ImdbIcon>
                     {result.imdb_id &&
                         <ImdbLink href={`https://www.imdb.com/title/${result.imdb_id}`}>
+                            IMDB
+                        </ImdbLink>
+                    }
+                    {externalResult.imdb_id &&
+                        <ImdbLink href={`https://www.imdb.com/title/${externalResult.imdb_id}`}>
                             IMDB
                         </ImdbLink>
                     }

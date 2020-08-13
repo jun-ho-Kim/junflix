@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Company from "./Tap/Company";
 import Country from "./Tap/Country";
 import TvSeasons from "./Tap/Seasons";
+import CommingSoon from "./Tap/CommingSoon";
 import VideoList from "./Tap/VideoList";
 
 const NavContainer = styled.nav`
@@ -69,9 +70,9 @@ const ContentNav = ({pathname, id ,isMovie}) => (
         <Item select={pathname === `/movie/${id}/country`}>
             <SLink to={`/movie/${id}/country`}>Country</SLink>
         </Item>
-        {/* <Item select={pathname === `/movie/${id}/credits`}>
-            <SLink to={`/show/${id}/credits`}>Cridits</SLink>
-        </Item> */}
+        <Item select={pathname === `/movie/${id}/credits`}>
+            <SLink to={`/movie/${id}/credits`}>Cridits</SLink>
+        </Item>
         <Item select={pathname === `/movie/${id}/videos`}>
             <SLink to={`/movie/${id}/videos`}>Videos</SLink>
         </Item>
@@ -88,9 +89,9 @@ const ContentNav = ({pathname, id ,isMovie}) => (
         <Item select={pathname === `/show/${id}/seasons`}>
             <SLink to={`/show/${id}/seasons`}>Seasons</SLink>
         </Item>
-        {/* <Item select={pathname === `/show/${id}/credits`}>
+        <Item select={pathname === `/show/${id}/credits`}>
             <SLink to={`/show/${id}/credits`}>Cridits</SLink>
-        </Item> */}
+        </Item>
         <Item select={pathname === `/show/${id}/videos`}>
             <SLink to={`/show/${id}/videos`}>Videos</SLink>
         </Item>                  
@@ -129,13 +130,13 @@ const ContentNav = ({pathname, id ,isMovie}) => (
 
 <Route path="/movie/:id/company" component={Company} />
 <Route path="/movie/:id/country" component={Country} />
-<Route path="/movie/:id/credits" component={VideoList} />
+<Route path="/movie/:id/credits" component={CommingSoon} />
 <Route path="/movie/:id/videos" component={VideoList} />
 
 <Route path="/show/:id/company" component={Company} />
 <Route path="/show/:id/country" component={Country} />
 <Route path="/show/:id/seasons" component={TvSeasons} />
-<Route path="/show/:id/credits" component={VideoList} />
+<Route path="/show/:id/credits" component={CommingSoon} />
 <Route path="/show/:id/videos" component={VideoList} />
 </>
 );
