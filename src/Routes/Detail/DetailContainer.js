@@ -1,7 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import  {useLocation, useParams, useHistory} from "react-router-dom";
 import DetailPresenter from "./DetailPresenter";
 import {moviesApi, tvApi} from "api";
+
+const useLiked = initialValue => {
+    const [liked, SetLiked] = useState(initialValue);
+    const toggler = useCallback(() => SetLiked(liked => !liked));
+    return [liked, toggler];
+}
+
 
 export default function Detail() {
     const [loading, setLoading] = useState(true);
@@ -12,6 +19,8 @@ export default function Detail() {
     const {pathname} = useLocation();     
     const isMovie= pathname.includes("/movie/");  
     const {id} = useParams();
+    const [currentLiked, toggleAway] = useLiked(false);
+    
     // const parsedId = parseInt(id);
     // const [loading, setLoading] = useState(true);
     // const [result, setResult] = useState();
@@ -41,6 +50,8 @@ export default function Detail() {
         return push("/");
     }
     // let result = null;
+
+
     try {
         if(isMovie) {
             ({data:result} = await moviesApi.movieDetail(parsedId));
@@ -77,6 +88,8 @@ export default function Detail() {
         result={result} 
         externalResult={externalResult}
         pathname={pathname}
+        currentLiked={currentLiked} 
+        toggleAway={toggleAway}
         isMovie={isMovie}
         />
 };

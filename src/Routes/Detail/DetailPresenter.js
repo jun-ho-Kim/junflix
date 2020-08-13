@@ -54,6 +54,13 @@ const TitleImdb = styled.div`
     display: flex;
     justify-content: flex-start;
 `;
+
+const Liked = styled.div`
+    margin-left: 7px;
+    font-size: 26px;
+    cursor: pointer;
+`;
+
 const Title = styled.h3`
     font-size: 32px;
 `;
@@ -154,7 +161,7 @@ const Overview = styled.p`
 //     left: 0;
 // `;
 
-const DetailPresenter = ({key, id, result, externalResult, loading, error, pathname, isMovie}) => 
+const DetailPresenter = ({key, id, result, externalResult, currentLiked, toggleAway, loading, error, pathname, isMovie}) => 
     loading? (
         <Loader />
     ) : (
@@ -213,6 +220,9 @@ const DetailPresenter = ({key, id, result, externalResult, loading, error, pathn
                         src={require("../../assets/youtube.png")} />
                     }
                     </VideoContainer>
+                    <Liked onClick={toggleAway}>
+                        {currentLiked ? "💖" : "🤍"}
+                    </Liked>                    
                     </ImdbIcon>
                     </Item>
 
