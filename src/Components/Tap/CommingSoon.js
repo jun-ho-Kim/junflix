@@ -29,6 +29,7 @@ const DirectorTitle = styled.div`
     align-items: center;
     font-size: 25px;
     font-weight: 700;
+    text-align: center;
 `;
 
 const DirectorName = styled.div`
@@ -44,9 +45,11 @@ const DirectorPhoto = styled.img`
 `;
 
 const Divided = styled.h3`
-    margin: 12px 0 27px 40px;
-    font-size: 24px;
+    margin: 12px 0 27px 5px;
+    font-size: 15px;
     font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
 `;
 
 const CastBox = styled.div`
@@ -104,7 +107,7 @@ const Credits = () => {
     }, []);
     return detail.loading ? <TapLoader /> : (
     <Container>
-        <DirectorTitle>Director 🎬</DirectorTitle>
+        <DirectorTitle>Director 🎬 👉 </DirectorTitle>
         <DirectorContainer>
         {detail.data && detail.data.crew.map(crew =>
         <DirectorBox>
@@ -125,7 +128,7 @@ const Credits = () => {
         )}
         </DirectorContainer>
         {/*  */}
-        <Divided>Actor 🤸‍♂️</Divided>
+        <Divided>🤸‍♂️ Actor  /🤸‍♀️ Actress 👇</Divided>
         <Divided></Divided>
         {detail.data && detail.data.cast.map((cast,index) =>
         <CastBox>

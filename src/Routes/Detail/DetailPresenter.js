@@ -50,16 +50,20 @@ const Data = styled.div`
 `;
 const TitleImdb = styled.div`
     /* width: 80%;  */
-    margin-left: 12px;
+    /* margin-left: 12px; */
     display: flex;
     justify-content: flex-start;
 `;
 
 const Liked = styled.div`
-    margin-left: 7px;
+    /* margin-left: 7px; */
+    margin-top:3px;
+    margin-right: 12px;    
+    align-self: center;
     font-size: 26px;
     cursor: pointer;
 `;
+
 
 const Title = styled.h3`
     font-size: 32px;
@@ -184,6 +188,9 @@ const DetailPresenter = ({key, id, result, externalResult, currentLiked, toggleA
             />
             <Data>
                 <TitleImdb>
+                <Liked onClick={toggleAway}>
+                        {currentLiked ? "💖" : "🤍"}
+                </Liked>                           
                     <Title>
                         {result.original_title
                         ? result.original_title
@@ -220,9 +227,9 @@ const DetailPresenter = ({key, id, result, externalResult, currentLiked, toggleA
                         src={require("../../assets/youtube.png")} />
                     }
                     </VideoContainer>
-                    <Liked onClick={toggleAway}>
+                    {/* <Liked onClick={toggleAway}>
                         {currentLiked ? "💖" : "🤍"}
-                    </Liked>                    
+                    </Liked>                     */}
                     </ImdbIcon>
                     </Item>
 
